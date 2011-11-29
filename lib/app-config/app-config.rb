@@ -92,8 +92,8 @@ module AppConfig
     hash = {}
     
     begin
-      @@records.keys.map do |k|
-        hash[k.to_sym] = self[k]
+      keys.map do |k|
+        hash[k.to_sym] = self[k.to_sym]
       end
       hash
     end
