@@ -16,7 +16,8 @@ module AppConfig
     'method_missing',
     'exist?',
     'source_model',
-    'configuration'
+    'configuration',
+    'save'
   ].freeze
   
   @@options = {}
@@ -87,6 +88,12 @@ module AppConfig
     @@options[:model]
   end
   
+  def self.to_hash
+    hash = {}
+    @@records.keys.map do |k|
+      hash[k.to_sym] = self[k]
+    end
+    hash
   protected
   
   # Checks the column structure of the source model
