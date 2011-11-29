@@ -90,11 +90,15 @@ module AppConfig
   
   def self.to_hash
     hash = {}
-    @@records.keys.map do |k|
-      hash[k.to_sym] = self[k]
+    
+    begin
+      @@records.keys.map do |k|
+        hash[k.to_sym] = self[k]
+      end
+      hash
     end
-    hash
   end
+  
   protected
   
   # Checks the column structure of the source model
