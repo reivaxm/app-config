@@ -94,6 +94,7 @@ module AppConfig
       hash[k.to_sym] = self[k]
     end
     hash
+  end
   protected
   
   # Checks the column structure of the source model
