@@ -69,9 +69,11 @@ module AppConfig
   end
   
   # Get configuration option
-  def self.[](key)
+  def self.[:key]=(value)
     @@records[key.to_s]
   end
+  
+  #Set options
   
   # Get configuration option by attribute
   def self.method_missing(method, *args)
@@ -124,6 +126,24 @@ module AppConfig
         )
       end
       records
+    rescue ActiveRecord::StatementInvalid => ex
+      raise InvalidSource, ex.message
+    end
+  end
+  
+  # Save data to model
+  def self.save
+    raise InvalidSource, 'Model is not defined!'     if @@options[:model].nil?
+    raise InvalidSource, 'Model was not found!'      unless @@options[:model].superclass == ActiveRecord::Base
+    raise InvalidSource, 'Model fields are invalid!' unless check_structure
+    
+    hash = self.to_hash
+    
+    begin
+      keys.map do |k|
+        record = @@options[:model].find(:all, :conditions => {@@options[:key].to_sym => k.to_s})
+        record.update_attributes(hash[k.to_sym])
+      end
     rescue ActiveRecord::StatementInvalid => ex
       raise InvalidSource, ex.message
     end
