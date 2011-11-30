@@ -34,9 +34,5 @@ module AppConfig
       raise InvalidType, 'Type is invalid!' unless FORMATS.include?(type)
       send("process_#{type}".to_sym, data.to_s)
     end
-    
-    def find_by(type)
-      "find_by_#{type}"
-    end
   end
 end
