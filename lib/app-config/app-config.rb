@@ -139,7 +139,7 @@ module AppConfig
     
     begin
       keys.map do |k|
-        record = @@options[:model].find(:all, :conditions => {@@options[:key].to_sym => k.to_s})
+        record = @@options[:model].find(:first, :conditions => {@@options[:key].to_sym => k.to_s})
         record.update_attributes(hash[k.to_sym])
       end
     rescue ActiveRecord::StatementInvalid => ex
