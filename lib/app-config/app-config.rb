@@ -142,7 +142,6 @@ module AppConfig
         record = @@options[:model].find(:first, :conditions => {@@options[:key].to_sym => k.to_s})
         record.update_attributes(hash[k.to_sym])
       end
-      self.reload
     rescue ActiveRecord::StatementInvalid => ex
       raise InvalidSource, ex.message
     end

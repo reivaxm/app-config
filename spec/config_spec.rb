@@ -63,4 +63,20 @@ describe 'AppConfig' do
     AppConfig.keys.size.should == 1
     AppConfig.foo.should == 'TEST'
   end
+  
+  it 'should provide to_hash method' do
+    s = Setting.find_by_keyname('foo')
+    s.update_attribute('value', 'TEST')
+    
+    AppConfig.to_hash.should == { :foo => { :value => "TEST"} }
+  end
+  
+  it 'should save data' do
+    s = Setting.find_by_keyname('foo')
+    s.update_attribute('value', 'TEST')
+    
+    AppConfig.reload
+    AppConfig.keys.size.should == 1
+    AppConfig.foo.should == 'TEST'
+  end
 end
