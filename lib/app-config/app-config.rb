@@ -93,7 +93,7 @@ module AppConfig
     
     begin
       keys.map do |k|
-        hash[k.to_sym] = self[k.to_sym]
+        hash[k.to_sym] = { @@options[:value].to_sym => self[k.to_sym] }
       end
       hash
     end
