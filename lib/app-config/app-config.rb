@@ -69,11 +69,9 @@ module AppConfig
   end
   
   # Get configuration option
-  def self.[:key]=(value)
+  def self.[](key)
     @@records[key.to_s]
   end
-  
-  #Set options
   
   # Get configuration option by attribute
   def self.method_missing(method, *args)
