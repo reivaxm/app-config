@@ -8,11 +8,11 @@ Primary datasource for AppConfig is an ActiveRecord model.
 
 via rubygems:
 
-    gem install app-config
+    gem install app-config -s https://github.com/reivaxm/app-config.git
   
 via github:
 
-    git clone git://github.com/sosedoff/app-config.git
+    git clone git://github.com/reivaxm/app-config.git
     cd app-config
     gem build
     gem install app-config-x.y.z.gem
@@ -137,7 +137,10 @@ You can define settings items manually.
 ```ruby
 AppConfig.set_key('KEYNAME', 'VALUE', 'FORMAT')
 ```
-  
+ 
+For update use 
+```AppConfig.save
+```
 Everytime you change your settings on the fly, use reload:
 
 ```ruby
@@ -152,4 +155,4 @@ AppConfig.flush
 
 ## Copyright
 
-Copyright (c) 2011 Dan Sosedoff.
+Copyright (c) 2011 Dan Sosedoff, 2013 Xavier MORTLETTE.

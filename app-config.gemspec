@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.version     = AppConfig::VERSION.dup
   s.summary     = "Configurable application settings"
   s.description = "Flexible and simple configuration settings for your Rails/Sinatra applications."
-  s.homepage    = "http://github.com/sosedoff/app-config"
-  s.authors     = ["Dan Sosedoff"]
-  s.email       = ["dan.sosedoff@gmail.com"]
+  s.homepage    = "http://github.com/reivaxm/app-config"
+  s.authors     = ["Xavier MORTELETTE"]
+  s.email       = ["reivaxm@epikaf.net"]
   s.license     = "MIT"
   
   s.files = `git ls-files`.split("\n")
